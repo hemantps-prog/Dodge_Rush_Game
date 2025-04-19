@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullets.hpp" />
+    <ClInclude Include="coin.hpp" />
     <ClInclude Include="globals.hpp" />
     <ClInclude Include="player.hpp" />
   </ItemGroup>

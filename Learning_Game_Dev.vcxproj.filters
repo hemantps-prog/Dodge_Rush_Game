@@ -35,5 +35,8 @@
     <ClInclude Include="bullets.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="coin.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,8 +2,14 @@
 #include "raylib.h"
 #include <iostream>
 
+
+void RespawnCoin(Rectangle& coin, const int &screenWidth,const int& screenHeight) {
+    coin.x = (float)GetRandomValue(0, screenWidth - (int)coin.width);
+    coin.y = (float)GetRandomValue((screenHeight / 2), (screenHeight/2) + (int)coin.height - platform1.height); // not too close to bottom
+}
+
 int main() {
-    InitWindow(screenWidth, screenHeight, "Raylib Platformer");
+    InitWindow(screenBaseWidth, screenBaseHeight, "Dodge Rush");
     SetTargetFPS(60);
 
 
@@ -86,6 +92,12 @@ int main() {
             player.onplatform = false;
         }
 
+        // Coin collision
+        if (CheckCollisionRecs(playerRect, coin)) {
+            score += 1;
+            RespawnCoin(coin, screenWidth, screenHeight);
+        }
+
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
@@ -93,6 +105,15 @@ int main() {
         for (auto& b : bullets) {
             DrawCircle(static_cast<int>(b.pos.x), static_cast<int>(b.pos.y), b.radius, RED);
         }
+
+
+        //Drawing Coin
+        DrawRectangleRec(coin, coinColor);
+        
+        //Drawing Score Text
+        DrawText(TextFormat("Score: %d", score), 10, screenHeight+15, 20, DARKGRAY);
+
+
 
         DrawRectangleRec(ground, DARKGRAY);
         DrawRectangle(player.position.x, player.position.y, player.width, player.height, BLUE);

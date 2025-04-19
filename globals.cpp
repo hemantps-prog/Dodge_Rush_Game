@@ -7,3 +7,7 @@ int x = 5;
 std::vector<bullet> bullets;
 bool gamerunning = true;
 std::mutex bulletmutex;
+
+Rectangle coin = { 0, (screenHeight - ground.height - 20), 20, 20 };
+Color coinColor = GOLD;
+int score = 0;
